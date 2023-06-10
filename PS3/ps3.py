@@ -245,6 +245,8 @@ def play_game(word_list):
     num = int(input("Please enter the number of hands you want to play: "))
     total_score = 0
     handsize = 7
+    allow = 1
+    temp = 0
     for i in range(0, num):
         allowance = 1
         hand = deal_hand(handsize)
@@ -257,7 +259,13 @@ def play_game(word_list):
                     allowance -= 1
                 hand = substitute_hand(hand, subs)
             print("\nRound starting!")
+            temp = total_score
             total_score = total_score + play_hand(hand, word_list)   
+            if allow == 1:
+                ans = input("\nDo you want to replay the previous hand? Answer 'yes' or 'no': ")
+                if ans == "yes":
+                    total_score = temp + play_hand(hand,word_list)
+                    allow -=1
             break
     print("\nIn the whole game you have earned:", total_score, "points!")
     return total_score
