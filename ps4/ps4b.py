@@ -28,9 +28,6 @@ def is_word(word_list, word):
     return word in word_list
 
 def get_story_string():
-    """
-    Returns: a story in encrypted text.
-    """
     f = open("story.txt", "r")
     story = str(f.read())
     f.close()
